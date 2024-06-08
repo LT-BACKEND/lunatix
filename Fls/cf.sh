@@ -3,18 +3,23 @@ MYIP=$(wget -qO- icanhazip.com);
 apt install jq curl -y
 clear
 echo -e ""
-echo -e "\033[96;1m============================\033[0m"
-echo -e "\033[93;1m      INPUT SUBDOMAIN"
-echo -e "\033[96;1m============================\033[0m"
-echo -e "\033[91;1m Note. contoh Subdomain :\033[0m \033[93mbodoh22 \033[0m"
-echo -e " "
-read -p "SUBDOMAIN :  " domen
 echo -e ""
-DOMAIN=zvx.my.id
+echo -e "\033[96;1m┌─────────────────────────────────────────────────┐\033[0m "
+echo -e "\e[96;1m│\e[0m \033[41;1;97;1m                   SUBDOMAIN                   \033[0m \e[96;1m│\e[0m"
+echo -e "\033[96;1m└─────────────────────────────────────────────────┘\033[0m "
+echo -e ""
+echo -e "\033[91;1m - contoh Subdomain :\033[0m \033[93mbodoh22 , waduk-tai \033[0m"
+echo -e "\033[37;1m - dilarang Menggunakan Kata Yg Berbau -\e[0m"
+echo -e "\033[37;1m - domain sperti my.id , .me , .com .biz.id \e[0m"
+echo -e ""
+echo -e "\033[96;1m└─────────────────────────────────────────────────┘\033[0m "
+echo -e " "
+read -p " SUBDOMAIN  :  " domen
+echo -e ""
+#domen=lt.`(</dev/urandom tr -dc a-z0-9 | head -c5)`
+DOMAIN=inject.cloud
 sub=${domen}
-dns=${sub}.zvx.my.id
-#(</dev/urandom tr -dc a-z0-9 | head -c5)
-dns=${sub}.zvx.my.id
+dns=${sub}.inject.cloud
 CF_KEY=e03f30d53ad7ec2ab54327baa5e2da5ab44f0
 CF_ID=mezzqueen293@gmail.com
 set -euo pipefail
@@ -48,5 +53,5 @@ echo "$dns" > /root/scdomain
 echo "$dns" > /etc/xray/domain
 echo "$dns" > /etc/v2ray/domain
 echo "$dns" > /etc/xray/scdomain
-echo "IP=$dns" > /var/lib/kyt/ipvps.conf
+echo "IP=$dns" > /var/lib/LT/ipvps.conf
 cd
