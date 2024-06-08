@@ -7,7 +7,7 @@ MYIP2="s/xxxxxxxxx/$domain/g";
 function ovpn_install() {
 rm -rf /etc/openvpn
 mkdir -p /etc/openvpn
-wget -O /etc/openvpn/vpn.zip "https://raw.githubusercontent.com/LT-BACKEND/inflating/vpnzip/inflating_vpn_dote_zip/inflating_lunatic.zip" >/dev/null 2>&1
+wget -O /etc/openvpn/inflating_lunatic.zip "https://raw.githubusercontent.com/LT-BACKEND/inflating/vpnzip/inflating_vpn_dote_zip/inflating_lunatic.zip" >/dev/null 2>&1
 unzip -d /etc/openvpn/ /etc/openvpn/inflating_lunatic.zip
 rm -f /etc/openvpn/inflating_lunatic.zip
 chown -R root:root /etc/openvpn/server/easy-rsa/
