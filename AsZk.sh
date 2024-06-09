@@ -312,13 +312,13 @@ fi
 }
 clear
 restart_system() {
-USRSC=$(wget -qO- https://raw.githubusercontent.com/LT-BACKEND/REGISTER/main/IPVPS | grep $ipsaya | awk '{print $2}')
-EXPSC=$(wget -qO- https://raw.githubusercontent.com/LT-BACKEND/REGISTER/main/IPVPS | grep $ipsaya | awk '{print $3}')
+USRSC=$(wget -qO- https://raw.githubusercontent.com/LT-BACKEND/REGISTER/main/IPVPS | grep $MYIP | awk '{print $2}')
+EXPSC=$(wget -qO- https://raw.githubusercontent.com/LT-BACKEND/REGISTER/main/IPVPS | grep $MYIP | awk '{print $3}')
 domain=$(cat /root/domain)
 #userdel jame > /dev/null 2>&1
 #Username="g"
 #Password=g
-mkdir -p /home/script/
+#mkdir -p /home/script/
 #useradd -r -d /home/script -s /bin/bash -M $Username > /dev/null 2>&1
 #echo -e "$Password\n$Password\n" | passwd $Username > /dev/null 2>&1
 #usermod -aG sudo $Username > /dev/null 2>&1
@@ -478,8 +478,9 @@ print_success "Konfigurasi Packet"
 function ssh(){
 clear
 print_install "Memasang Password SSH"
-wget -q -O /usr/local/sbin/limitssh-ip "${REPO}Fls/limitssh-ip"
-chmod +x /usr/local/sbin/limitssh-ip
+#wget -q -O /usr/local/sbin/limitssh-ip "${REPO}Fls/limitssh-ip"
+#chmod +x /usr/local/sbin/limitssh-ip
+#cd
 wget -O /etc/pam.d/common-password "${REPO}Fls/password"
 chmod +x /etc/pam.d/common-password
 DEBIAN_FRONTEND=noninteractive dpkg-reconfigure keyboard-configuration
